@@ -28,7 +28,7 @@ module.exports = {
 		"indent": [ ERROR,  "tab"],
 		"jsx-quotes": [ ERROR, "prefer-double" ],
 		"semi": [ ERROR, "always" ],
-		"block-scoped-var": [ ERROR, "always" ],
+		"block-scoped-var": ERROR,
 		// "object-curly-newline": [ ERROR, {
 		// 	"ObjectExpression": { "multiline": true, "minProperties": 3, "consistent": true },
 		// 	"ObjectPattern": { "multiline": true, "minProperties": 3, "consistent": true },
@@ -39,7 +39,7 @@ module.exports = {
 			"code": 100,
 			"ignoreUrls": true,
 		} ],
-		"no-self-compare": [ ERROR, "always" ],
+		"no-self-compare": ERROR,
 		"yoda": [ ERROR, "always" ],
 	},
 	"ignorePatterns": ["config", "scripts"]
