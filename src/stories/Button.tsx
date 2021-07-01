@@ -11,9 +11,9 @@ interface ButtonProps {
    */
   backgroundColor?: string;
   /**
-   * How large should the button be?
+   * How large should the button be????
    */
-  size?: "small" | "medium" | "large";
+  size: "small" | "medium" | "large";
   /**
    * Button contents
    */
@@ -33,7 +33,7 @@ export const Button = ({
 	backgroundColor,
 	label,
 	...props
-}: ButtonProps): ButtonProps => {
+}: ButtonProps): React.ReactElement => {
 	const mode = primary ? "storybook-button--primary" : "storybook-button--secondary";
 	return (
 		<button

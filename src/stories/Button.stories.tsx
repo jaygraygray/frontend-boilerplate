@@ -35,3 +35,9 @@ Small.args = {
 	size: "small",
 	label: "Button",
 };
+
+export const Custom = Template.bind({});
+Custom.args = {
+	size: "large",
+	label: "Sumshit",
+};

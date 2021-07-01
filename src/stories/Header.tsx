@@ -10,7 +10,7 @@ interface HeaderProps {
   onCreateAccount: () => void;
 }
 
-export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps): HeaderProps => (
+export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps): React.ReactElement => (
 	<header>
 		<div className="wrapper">
 			<div>

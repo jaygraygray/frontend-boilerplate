@@ -1,3 +1,5 @@
+
+const WARN = 1, ERROR = 2;
 // eslint-disable-next-line no-undef
 module.exports = {
 	"env": {
@@ -22,22 +24,23 @@ module.exports = {
 		"@typescript-eslint"
 	],
 	"rules": {
-		"indent": [
-			"error",
-			"tab"
-		],
-		"linebreak-style": [
-			"error",
-			"unix"
-		],
-		"quotes": [
-			"error",
-			"double"
-		],
-		"semi": [
-			"error",
-			"always"
-		]
+		"eqeqeq": [ ERROR, "smart" ],
+		"indent": [ ERROR,  "tab"],
+		"jsx-quotes": [ ERROR, "prefer-double" ],
+		"semi": [ ERROR, "always" ],
+		"block-scoped-var": [ ERROR, "always" ],
+		// "object-curly-newline": [ ERROR, {
+		// 	"ObjectExpression": { "multiline": true, "minProperties": 3, "consistent": true },
+		// 	"ObjectPattern": { "multiline": true, "minProperties": 3, "consistent": true },
+		// 	"ImportDeclaration": { "multiline": true, "minProperties": 3, "consistent": true },
+		// 	"ExportDeclaration": { "multiline": true, "minProperties": 3, "consistent": true },
+		// } ],
+		"max-len": [ ERROR, {
+			"code": 100,
+			"ignoreUrls": true,
+		} ],
+		"no-self-compare": [ ERROR, "always" ],
+		"yoda": [ ERROR, "always" ],
 	},
 	"ignorePatterns": ["config", "scripts"]
 };
