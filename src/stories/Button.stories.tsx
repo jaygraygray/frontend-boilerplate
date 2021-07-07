@@ -1,6 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
+
 import { Button } from "./Button";
 
 export default {
@@ -11,7 +12,11 @@ export default {
 	},
 } as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+
+// add 
+const Template: ComponentStory<typeof Button> = (props) =>
+	<Button {...props} onClick={() => console.log("wat") }/>;
+
 
 export const Primary = Template.bind({});
 Primary.args = {

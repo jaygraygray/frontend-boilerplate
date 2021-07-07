@@ -21,7 +21,8 @@ module.exports = {
 	},
 	"plugins": [
 		"react",
-		"@typescript-eslint"
+		"@typescript-eslint",
+		"formatjs"
 	],
 	"rules": {
 		"eqeqeq": [ ERROR, "smart" ],
@@ -41,6 +42,7 @@ module.exports = {
 		} ],
 		"no-self-compare": ERROR,
 		"yoda": [ ERROR, "always" ],
+		"formatjs/no-offset": "error"
 	},
 	"ignorePatterns": ["config", "scripts"]
 };
