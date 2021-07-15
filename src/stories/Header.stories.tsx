@@ -1,7 +1,7 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 
-import { Header } from "./Header";
+import {Header} from "./Header";
 
 export default {
 	title: "Example/Header",
@@ -15,7 +15,7 @@ LoggedIn.args = {
 	user: {},
 };
 
-var woo = 'asdf';
+const woo = 'asdf';
 
 export const LoggedOut = Template.bind({});
 LoggedOut.args = {};

@@ -1,14 +1,14 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import {ComponentStory, ComponentMeta} from "@storybook/react";
 
 
-import { Button } from "./Button";
+import {Button} from "../ui/components";
 
 export default {
 	title: "Example/Button",
 	component: Button,
 	argTypes: {
-		backgroundColor: { control: "color" },
+		backgroundColor: {control: "color"},
 	},
 } as ComponentMeta<typeof Button>;
 

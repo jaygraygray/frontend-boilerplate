@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Header } from "./Header";
+import {Header} from "./Header";
 import "./page.css";
 
 interface PageProps {
@@ -9,8 +9,8 @@ interface PageProps {
   onLogout: () => void;
   onCreateAccount: () => void;
 }
-
-export const Page = ({ user, onLogin, onLogout, onCreateAccount }: PageProps): PageProps => (
+ 
+export const Page = ({user, onLogin, onLogout, onCreateAccount}: PageProps): PageProps => (
 	<article>
 		<Header user={user} onLogin={onLogin} onLogout={onLogout} onCreateAccount={onCreateAccount} />
 
