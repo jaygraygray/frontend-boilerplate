@@ -20,29 +20,38 @@ const Template: ComponentStory<typeof Button> = (props) =>
 
 export const Primary = Template.bind({});
 Primary.args = {
-	primary: true,
+	actionType: "primary",
+	outline: false,
 	label: "Button",
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
+	actionType: "secondary",
+	outline: false,
 	label: "Button",
 };
 
 export const Large = Template.bind({});
 Large.args = {
+	actionType: "info",
+	outline: true,
 	size: "large",
 	label: "Button",
 };
 
 export const Small = Template.bind({});
 Small.args = {
+	actionType: "warning",
+	outline: false,
 	size: "small",
 	label: "Button",
 };
 
 export const Custom = Template.bind({});
 Custom.args = {
+	actionType: "",
+	outline: "",
 	size: "large",
 	label: "Sumshit",
 };

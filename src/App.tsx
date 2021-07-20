@@ -19,7 +19,7 @@ function App(): ReactElement {
 				>
           Learn React
 				</a>
-			<Button size="large" label="Click Me Plz" outline actionType="danger" />
+			<Button size="large" label="Click Me Plz" outline actionType="danger" disabled />
 			</header>
 		</div>
 	);

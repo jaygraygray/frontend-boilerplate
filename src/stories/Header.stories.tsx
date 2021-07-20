@@ -15,7 +15,6 @@ LoggedIn.args = {
 	user: {},
 };
 
-const woo = 'asdf';
 
 export const LoggedOut = Template.bind({});
 LoggedOut.args = {};
