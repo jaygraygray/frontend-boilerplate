@@ -1,4 +1,5 @@
 import React, {ReactElement} from "react";
+import {Button} from "./ui/components"; 
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -18,6 +19,7 @@ function App(): ReactElement {
 				>
           Learn React
 				</a>
+			<Button size="large" label="Click Me Plz" outline actionType="danger" />
 			</header>
 		</div>
 	);

@@ -7,9 +7,9 @@ import "./style.scss";
 interface ButtonProps extends AriaButtonProps {
 
   /**
-   * Is this the principal call to action on the page?
+   * What category of action this button represents.
    */
-  primary?: boolean;
+  actionType?: "primary" | "secondary" | "success" | "danger" | "warning" | "info" | "link";
 
   /**
    * What background color to use
@@ -35,29 +35,79 @@ interface ButtonProps extends AriaButtonProps {
    * Controls disabled state
    */
   disabled?: boolean;
+
+  /**
+   * Display outline version of button
+   */
+   outline?: boolean;
+
 }
 
-/**
+function parseBootstrapClassName(string: "small" | "medium" | "large"): string | undefined {
+  switch (string) {
+    case "small":
+      return "btn-sm";
+    case "medium":
+      return "btn-md";
+    case "large":
+      return "btn-lg";
+    default:
+      return undefined;
+  }
+}
+
+type ButtonActionTypes = "primary" | "secondary" | "success" | "danger" | "warning" | "info" | "link";
+
+// output needs to be btn-outline-primary or btn-primary
+// based on boolean input
+function modifyBootStrapButtonClassname(isOutline = false, actionType: ButtonActionTypes): string {
+  switch (actionType) {
+    case "primary":
+      return isOutline ? "btn-outline-primary" : "btn-primary";
+    case "secondary":
+      return isOutline ? "btn-outline-secondary" : "btn-secondary";
+    case "success":
+      return isOutline ? "btn-outline-success" : "btn-success";
+    case "danger":
+      return isOutline ? "btn-outline-danger" : "btn-danger";
+    case "warning":
+      return isOutline ? "btn-outline-warning" : "btn-warning";
+    case "info":
+      return isOutline ? "btn-outline-info" : "btn-info";
+    case "link":
+      return isOutline ? "btn-outline-link" : "btn-link";
+    default:
+      return "btn-primary";
+  }
+}
+
+
+  /**
  * Primary UI component for user interaction
  *
  */
+
 export const Button = ({
-	primary = false,
+	actionType = "primary",
 	size = "medium",
-	backgroundColor = "#fff",
 	label,
+  outline = false,
 	...props
 }: ButtonProps): React.ReactElement => {
   const ref: RefObject<HTMLButtonElement> = useRef(null);
-  const buttonProps = useButton(props, ref);
-  const mode = primary ? "storybook-button--primary" : "storybook-button--secondary";
+  const {buttonProps} = useButton(props, ref);
+  const sizeString = size ? parseBootstrapClassName(size) : undefined;
+
+  const type = modifyBootStrapButtonClassname(outline, actionType);
+  const outlineString = outline ? `btn-outline-${actionType}` : undefined;
+  
+  const className = `btn ${type} ${sizeString}`;
+
   return (
 		<button
-			type="button"
-			className={["storybook-button", `storybook-button--${size}`, mode].join(" ")}
-			style={{backgroundColor}}
 			{...props}
-    {...buttonProps}
+      {...buttonProps}
+      className={className}
 		>
 			{label}
 		</button>
