@@ -65,6 +65,7 @@ export const Button = ({
       {...buttonProps}
       className={className}
       disabled={props.disabled || buttonProps.disabled}
+      aria-label={label}
 		>
 			{label}
 		</button>
