@@ -5,11 +5,8 @@ import {ComponentStory, ComponentMeta} from "@storybook/react";
 import {Button} from "../ui/components";
 
 export default {
-	title: "Example/Button",
+	title: "Button",
 	component: Button,
-	argTypes: {
-		backgroundColor: {control: "color"},
-	},
 } as ComponentMeta<typeof Button>;
 
 
