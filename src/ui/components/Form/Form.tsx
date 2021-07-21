@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ReactElement} from "react";
 
 
 interface FormProps {
@@ -12,16 +12,22 @@ interface FormProps {
    * Has user entered all valid data?
    */
   valid?: boolean;  
+  children: ReactElement<any> | ReactElement<any>[];
 }
+
+/**
+ * button alignment prop
+ * default css margins
+ * 
+*/
 
 export const Form = ({
   disabled,
   children,
   ...props
-}: FormProps) => {
+}: FormProps): ReactElement => {
   return (
-    <form {...props} disabled={disabled}>
-        hi :)
+    <form {...props}>
       {children}
     </form>
   );

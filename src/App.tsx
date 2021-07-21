@@ -1,5 +1,5 @@
 import React, {ReactElement} from "react";
-import {Button, Form} from "./ui/components"; 
+import {Button, Form, Input} from "./ui/components"; 
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -20,7 +20,8 @@ function App(): ReactElement {
           Learn React
 				</a>
 			<Form>
-				<Button size="large" label="Click Me Plz" outline actionType="danger" disabled />
+				<Button size="large" label="Click Me Plz" actionType="primary" />
+        <Input type="input" label="Enter name" placeholder="blha" />
 			</Form>
 			</header>
 		</div>

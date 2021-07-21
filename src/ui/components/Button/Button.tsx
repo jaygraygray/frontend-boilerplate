@@ -1,4 +1,4 @@
-import React, {RefObject, useRef} from "react";
+import React, {RefObject, useRef, ReactElement} from "react";
 import {useButton} from "react-aria";
 import type {AriaButtonProps} from "@react-types/button";
 import {parseBootstrapClassName, modifyBootStrapButtonClassname} from "./utils"; 
@@ -50,7 +50,7 @@ export const Button = ({
 	label,
   outline = false,
 	...props
-}: ButtonProps): React.ReactElement => {
+}: ButtonProps): ReactElement => {
   const ref: RefObject<HTMLButtonElement> = useRef(null);
   const {buttonProps} = useButton(props, ref);
   const sizeString = size ? parseBootstrapClassName(size) : undefined;
