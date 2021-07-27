@@ -82,7 +82,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "make-pretty": "prettier --check 'src/'",
-    "lint": "eslint . --fix --max-warnings 0 && npm run make-pretty"
+    "lint": "eslint . --fix --max-warnings 0",
+    "check": "npm run lint && npm run make-pretty"
   },
   "eslintConfig": {
     "extends": [
