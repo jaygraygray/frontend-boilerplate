@@ -41,7 +41,6 @@ module.exports = {
     //   ignoreUrls: true,
     // }],
     "no-self-compare": ERROR,
-    yoda: [ERROR, "always"],
     "formatjs/no-offset": "error",
     "react/no-array-index-key": ERROR,
     "react/no-adjacent-inline-elements": ERROR,

@@ -5,6 +5,9 @@
 @import "../node_modules/bootstrap/scss/functions";
 
 // 2. Include any default variable overrides here
+$form-label-font-size: 3rem;
+$form-label-color: #555;
+$enable-shadows: false;
 
 // 3. Include remainder of required Bootstrap stylesheets
 @import "../node_modules/bootstrap/scss/variables";

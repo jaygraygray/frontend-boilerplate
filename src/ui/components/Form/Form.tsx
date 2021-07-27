@@ -27,8 +27,10 @@ export const Form = ({
   ...props
 }: FormProps): ReactElement => {
   return (
-    <form {...props}>
-      {children}
+    <form {...props} className="form-container">
+      <div className="form-group">
+        {children}
+      </div>
     </form>
   );
 };

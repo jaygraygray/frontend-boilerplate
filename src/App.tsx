@@ -6,24 +6,13 @@ import "./App.css";
 function App(): ReactElement {
 	return (
 		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-          Edit <code>src/App.tsx</code> and save to reload.
-				</p>
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-          Learn React
-				</a>
+			<img src={logo} className="App-logo" alt="logo" />
 			<Form>
 				<Button size="large" label="Click Me Plz" actionType="primary" />
-        <Input type="input" label="Enter name" placeholder="blha" />
+        <br />
+        <br />
+        <Input type="text" label="Enter name" size="sm" helpText="Enter a valid email address please and thank you." />
 			</Form>
-			</header>
 		</div>
 	);
 }
