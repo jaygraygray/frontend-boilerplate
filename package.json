@@ -81,7 +81,8 @@
     "test": "node scripts/test.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "lint": "eslint . --fix --max-warnings 0"
+    "make-pretty": "prettier --check 'src/'",
+    "lint": "eslint . --fix --max-warnings 0 && npm run make-pretty"
   },
   "eslintConfig": {
     "extends": [
