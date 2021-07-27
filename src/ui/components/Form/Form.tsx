@@ -1,8 +1,6 @@
-import React, {ReactElement} from "react";
-
+import React, { ReactElement } from "react";
 
 interface FormProps {
-
   /**
    * Is user able to interact with form?
    */
@@ -11,15 +9,15 @@ interface FormProps {
   /**
    * Has user entered all valid data?
    */
-  valid?: boolean;  
+  valid?: boolean;
   children: ReactElement<any> | ReactElement<any>[];
 }
 
 /**
  * button alignment prop
  * default css margins
- * 
-*/
+ *
+ */
 
 export const Form = ({
   disabled,
@@ -28,9 +26,7 @@ export const Form = ({
 }: FormProps): ReactElement => {
   return (
     <form {...props} className="form-container">
-      <div className="form-group">
-        {children}
-      </div>
+      <div className="form-group">{children}</div>
     </form>
   );
 };

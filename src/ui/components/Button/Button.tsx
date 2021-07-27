@@ -1,16 +1,24 @@
-import React, {RefObject, useRef, ReactElement} from "react";
-import {useButton} from "react-aria";
-import type {AriaButtonProps} from "@react-types/button";
-import {parseBootstrapClassName, modifyBootStrapButtonClassname} from "./utils"; 
+import React, { RefObject, useRef, ReactElement } from "react";
+import { useButton } from "react-aria";
+import type { AriaButtonProps } from "@react-types/button";
+import {
+  parseBootstrapClassName,
+  modifyBootStrapButtonClassname
+} from "./utils";
 import "./style.scss";
 
-
 interface ButtonProps extends AriaButtonProps {
-
   /**
    * What category of action this button represents.
    */
-  actionType?: "primary" | "secondary" | "success" | "danger" | "warning" | "info" | "link";
+  actionType?:
+    | "primary"
+    | "secondary"
+    | "success"
+    | "danger"
+    | "warning"
+    | "info"
+    | "link";
 
   /**
    * How large should the button be????
@@ -35,40 +43,38 @@ interface ButtonProps extends AriaButtonProps {
   /**
    * Display outline version of button
    */
-   outline?: boolean;
-
+  outline?: boolean;
 }
 
-  /**
+/**
  * Primary UI component for user interaction
  *
  */
 
 export const Button = ({
-	actionType = "primary",
-	size = "medium",
-	label,
+  actionType = "primary",
+  size = "medium",
+  label,
   outline = false,
-	...props
+  ...props
 }: ButtonProps): ReactElement => {
   const ref: RefObject<HTMLButtonElement> = useRef(null);
-  const {buttonProps} = useButton(props, ref);
+  const { buttonProps } = useButton(props, ref);
   const sizeString = size ? parseBootstrapClassName(size) : undefined;
 
   const type = modifyBootStrapButtonClassname(outline, actionType);
-  
+
   const className = `btn ${type} ${sizeString}`;
 
   return (
-		<button
-			{...props}
+    <button
+      {...props}
       {...buttonProps}
       className={className}
       disabled={props.disabled || buttonProps.disabled}
       aria-label={label}
-		>
-			{label}
-		</button>
+    >
+      {label}
+    </button>
   );
 };
-
