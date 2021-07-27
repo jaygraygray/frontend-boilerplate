@@ -44,7 +44,6 @@ module.exports = {
     "formatjs/no-offset": "error",
     "react/no-array-index-key": ERROR,
     "react/no-adjacent-inline-elements": ERROR,
-    "object-property-newline": ERROR,
     "key-spacing": [ERROR, {"mode": "strict"}]
   },
   ignorePatterns: ["config", "scripts", "build", "node_modules"],

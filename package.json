@@ -173,6 +173,7 @@
     "eslint-plugin-regexp": "^0.13.1",
     "eslint-plugin-shopify": "^35.1.0",
     "eslint-plugin-sonarjs": "^0.9.1",
+    "prettier": "^2.3.2",
     "storybook-addon-i18n": "^5.1.13"
   }
 }

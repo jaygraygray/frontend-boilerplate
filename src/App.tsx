@@ -7,12 +7,14 @@ function App(): ReactElement {
 	return (
 		<div className="App">
 			<img src={logo} className="App-logo" alt="logo" />
-			<Form>
-				<Button size="large" label="Click Me Plz" actionType="primary" />
-        <br />
-        <br />
-        <Input type="text" label="Enter name" size="sm" helpText="Enter a valid email address please and thank you." />
-			</Form>
+      <div style={{width: "300px",margin: "auto"}} >
+        <Form>
+          <Button size="large" label="Click Me Plz" actionType="primary" />
+          <br />
+          <br />
+          <Input error="ruh roh you dumaass" type="text" label="Enter name" size="sm" helpText="Enter a valid email address please and thank you." />
+        </Form>
+      </div>
 		</div>
 	);
 }
