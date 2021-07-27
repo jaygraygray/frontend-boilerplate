@@ -5,7 +5,7 @@ const ERROR = 2;
 module.exports = {
   env: {
     browser: true,
-    es2021: true,
+    es2021: true
   },
   extends: [
     "eslint:recommended",
@@ -17,9 +17,9 @@ module.exports = {
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    ecmaFeatures: {jsx: true},
+    ecmaFeatures: { jsx: true },
     ecmaVersion: 12,
-    sourceType: "module",
+    sourceType: "module"
   },
   plugins: [
     "react",
@@ -27,7 +27,7 @@ module.exports = {
     "formatjs",
     "regexp",
     "jest",
-    "sonarjs",
+    "sonarjs"
   ],
   rules: {
     eqeqeq: [ERROR, "smart"],
@@ -35,7 +35,6 @@ module.exports = {
     "jsx-quotes": [ERROR, "prefer-double"],
     semi: [ERROR, "always"],
     "block-scoped-var": ERROR,
-    "object-curly-spacing": 2,
     // "max-len": [ERROR, {
     //   code: 100,
     //   ignoreUrls: true,
@@ -44,7 +43,7 @@ module.exports = {
     "formatjs/no-offset": "error",
     "react/no-array-index-key": ERROR,
     "react/no-adjacent-inline-elements": ERROR,
-    "key-spacing": [ERROR, {"mode": "strict"}]
+    "key-spacing": [ERROR, { mode: "strict" }]
   },
-  ignorePatterns: ["config", "scripts", "build", "node_modules"],
+  ignorePatterns: ["config", "scripts", "build", "node_modules"]
 };
