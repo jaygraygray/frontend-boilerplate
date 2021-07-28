@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, ReactElement } from "react";
 
 interface FormProps {
   /**
@@ -20,7 +20,7 @@ interface FormProps {
  *
  */
 
-export const Form = ({ children, ...props }: FormProps): ReactNode => {
+export const Form = ({ children, ...props }: FormProps): ReactElement => {
   return (
     <form {...props} className="form-container">
       <div className="form-group">{children}</div>

@@ -98,7 +98,7 @@ export const Input = ({
         />
       )}
       {props.helpText && (
-        <div className="form-text text-muted">{props.helpText}</div>
+        <div className="form-text text-muted ms-2">{props.helpText}</div>
       )}
     </div>
   );

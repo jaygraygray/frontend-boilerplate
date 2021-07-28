@@ -8,10 +8,12 @@ function App(): ReactElement {
     <div className="App">
       <div style={{ width: "300px", margin: "5rem" }}>
         <Form>
-          <Button size="large" label="Click Me Plz" actionType="primary" />
-          <br />
-          <br />
-          <Input label="Full name" size="md" helpText="dat help babes" />
+          <>
+            <Button size="large" label="Click Me Plz" actionType="primary" />
+            <br />
+            <br />
+            <Input label="Full name" size="md" helpText="dat help babes" />
+          </>
         </Form>
       </div>
     </div>
