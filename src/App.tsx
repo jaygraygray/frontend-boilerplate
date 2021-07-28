@@ -11,13 +11,7 @@ function App(): ReactElement {
           <Button size="large" label="Click Me Plz" actionType="primary" />
           <br />
           <br />
-          <Input
-            label="Full name"
-            error="Enter a valid email"
-            size="md"
-            helpText="dat help babes"
-            disabled
-          />
+          <Input label="Full name" size="md" helpText="dat help babes" />
         </Form>
       </div>
     </div>

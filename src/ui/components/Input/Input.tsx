@@ -19,19 +19,6 @@ interface Props {
   error?: string;
 }
 
-// conver variables sm md lg to numbers 1 2 3
-const convertSizeToNumbersForFonts = (size: string): number => {
-  switch (size) {
-    case "sm":
-      return 7;
-    case "md":
-      return 6;
-    case "lg":
-      return 4;
-  }
-  return 5;
-};
-
 export const Input = ({
   label = "",
   multiLine,
@@ -43,6 +30,7 @@ export const Input = ({
 }: Props): ReactElement => {
   const inputRef = useRef<HTMLInputElement & HTMLTextAreaElement>(null);
   // @todo: figure out typing for this
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { labelProps, inputProps }: any = useTextField(props, inputRef);
 
   const inputStyles = classNames({

@@ -1,11 +1,12 @@
-import React, { FC, ReactElement } from "react";
+import React, { ReactNode } from "react";
 import "./style.scss";
 
 type Props = {
-  children: ReactElement[];
+  children: ReactNode[];
 };
 
-export const Page: FC<Props> = (props): ReactElement => {
+export const Page = (props: Props): ReactNode => {
+  console.log(">>props", props);
   return (
     <>
       <div></div>
