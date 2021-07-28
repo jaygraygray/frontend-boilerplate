@@ -4,7 +4,7 @@ import classNames from "classnames";
 import "./style.scss";
 
 interface Props {
-  type: "text" | "textarea" | "password" | "email" | "url";
+  type?: "text" | "textarea" | "password" | "email" | "url";
   disabled?: boolean;
   value?: string;
   // onChange?: ((input: string) => void) | undefined
@@ -19,15 +19,23 @@ interface Props {
   error?: string;
 }
 
-// States:
-// failed validation
-// provide hint
-// readonly
+// conver variables sm md lg to numbers 1 2 3
+const convertSizeToNumbersForFonts = (size: string): number => {
+  switch (size) {
+    case "sm":
+      return 7;
+    case "md":
+      return 6;
+    case "lg":
+      return 4;
+  }
+  return 5;
+};
 
 export const Input = ({
-  label,
+  label = "",
   multiLine,
-  type,
+  type = "text",
   size = "md",
   error = "",
   disabled,
@@ -45,9 +53,17 @@ export const Input = ({
 
   const labelStyles = classNames({
     [`form-label-${size}`]: true,
+    "d-flex": true,
     "form-label": true,
-    "label-and-error": error.length > 0,
-    label: !error
+    "justify-content-between": error.length > 0,
+    "align-items-center": true,
+    "label-container": true
+  });
+
+  const errorStyles = classNames({
+    "error-label": true,
+    "m-bottom": label.length === 0,
+    "align-self-end": true
   });
 
   React.useEffect(() => {
@@ -58,22 +74,21 @@ export const Input = ({
     }
   }, [multiLine, type]);
 
-  console.log(">>labelStyles", labelStyles);
   const renderLabelOrError = (label: string, error: string) => {
     if (label) {
       return (
         <label {...labelProps} className={labelStyles} htmlFor={props.id}>
           <div>{label}</div>
-          <div className="error">{error}</div>
+          <div className={errorStyles}>{error}</div>
         </label>
       );
     }
-    return error;
+    return <div className={errorStyles}>{error}</div>;
   };
 
   return (
     <div className="element-container">
-      {renderLabelOrError(label || "", error)}
+      {renderLabelOrError(label, error)}
       {multiLine ? (
         <textarea
           {...inputProps}

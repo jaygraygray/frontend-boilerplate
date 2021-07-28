@@ -6,17 +6,17 @@ import "./index.scss";
 function App(): ReactElement {
   return (
     <div className="App">
-      <div style={{ width: "300px", margin: "auto" }}>
+      <div style={{ width: "300px", margin: "5rem" }}>
         <Form>
           <Button size="large" label="Click Me Plz" actionType="primary" />
           <br />
           <br />
           <Input
+            label="Full name"
             error="Enter a valid email"
-            type="text"
-            label="Enter name"
             size="md"
-            helpText="Add contextual help."
+            helpText="dat help babes"
+            disabled
           />
         </Form>
       </div>

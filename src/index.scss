@@ -28,7 +28,7 @@ $blue: #007bff;
 $indigo: #6610f2;
 $purple: #6f42c1;
 $pink: #e83e8c;
-$red: #ff7851;
+$red: #ff5151;
 $orange: #fd7e14;
 $yellow: #ffce67;
 $green: #56cc9d;
@@ -48,3 +48,12 @@ $dropdown-link-hover-color: $white;
 $dropdown-link-hover-bg: $secondary;
 $navbar-dark-color: rgba($white, 0.6);
 $navbar-dark-hover-color: $white;
+
+$form-label-font-size: 3rem;
+$form-label-color: #555;
+$enable-shadows: false !important;
+$form-input-border-radius: 50% !important;
+
+input:disabled {
+  cursor: not-allowed !important;
+}
