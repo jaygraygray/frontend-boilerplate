@@ -8,6 +8,7 @@
 $form-label-font-size: 3rem;
 $form-label-color: #555;
 $enable-shadows: false;
+$form-input-border-radius: 50%;
 
 // 3. Include remainder of required Bootstrap stylesheets
 @import "../node_modules/bootstrap/scss/variables";
@@ -22,3 +23,10 @@ $enable-shadows: false;
 @import "../node_modules/bootstrap/scss/grid";
 
 // 5. Add additional custom code here
+.form-label {
+  width: fit-content !important;
+}
+
+input {
+  cursor: not-allowed !important;
+}

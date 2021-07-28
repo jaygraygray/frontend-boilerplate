@@ -1,5 +1,8 @@
 import React, { RefObject, ReactElement, useRef } from "react";
 import { useTextField } from "react-aria";
+import classNames from "classnames";
+import "./style.scss";
+
 interface Props {
   type: "text" | "textarea" | "password" | "email" | "url";
   disabled?: boolean;
@@ -13,7 +16,7 @@ interface Props {
   multiLine?: boolean;
   size?: "sm" | "md" | "lg";
   helpText?: string;
-  error?: boolean | string;
+  error?: string;
 }
 
 // States:
@@ -26,18 +29,26 @@ export const Input = ({
   multiLine,
   type,
   size = "md",
-  error,
+  error = "",
+  disabled,
   ...props
 }: Props): ReactElement => {
   const inputRef = useRef<HTMLInputElement & HTMLTextAreaElement>(null);
   // @todo: figure out typing for this
   const { labelProps, inputProps }: any = useTextField(props, inputRef);
 
-  const sizeClass = `form-control-${size}`;
-  const className = `form-control ${sizeClass}`;
+  const inputStyles = classNames({
+    [`form-control-${size}`]: true,
+    error: error.length > 0,
+    "form-control": true
+  });
 
-  const labelSizeClass = `form-label-${size}`;
-  const labelClassName = `form-label ${labelSizeClass}`;
+  const labelStyles = classNames({
+    [`form-label-${size}`]: true,
+    "form-label": true,
+    "label-and-error": error.length > 0,
+    label: !error
+  });
 
   React.useEffect(() => {
     if (multiLine && "textarea" !== type) {
@@ -47,22 +58,26 @@ export const Input = ({
     }
   }, [multiLine, type]);
 
-  return (
-    <>
-      {label && (
-        <label
-          {...labelProps}
-          id={props.labelId}
-          htmlFor={props.id}
-          className={labelClassName}
-        >
-          {label}
+  console.log(">>labelStyles", labelStyles);
+  const renderLabelOrError = (label: string, error: string) => {
+    if (label) {
+      return (
+        <label {...labelProps} className={labelStyles} htmlFor={props.id}>
+          <div>{label}</div>
+          <div className="error">{error}</div>
         </label>
-      )}
+      );
+    }
+    return error;
+  };
+
+  return (
+    <div className="element-container">
+      {renderLabelOrError(label || "", error)}
       {multiLine ? (
         <textarea
           {...inputProps}
-          className={className}
+          className={inputStyles}
           ref={inputRef as RefObject<HTMLTextAreaElement>}
           aria-label={label}
           aria-describedby={props.labelId}
@@ -73,18 +88,16 @@ export const Input = ({
           {...inputProps}
           type={type}
           ref={inputRef as RefObject<HTMLInputElement>}
-          className={className}
+          className={inputStyles}
           aria-label={label}
           aria-describedby={props.labelId}
+          disabled={disabled}
         />
       )}
       {props.helpText && (
         <div className="form-text text-muted">{props.helpText}</div>
       )}
-      {error && typeof error === "string" && (
-        <div className="form-text text-danger">{error}</div>
-      )}
-    </>
+    </div>
   );
 };
 ``;

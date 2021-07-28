@@ -1,23 +1,22 @@
 import React, { ReactElement } from "react";
 import { Button, Form, Input } from "./ui/components";
-import logo from "./logo.svg";
-import "./App.css";
+import "./App.scss";
+import "./index.scss";
 
 function App(): ReactElement {
   return (
     <div className="App">
-      <img src={logo} className="App-logo" alt="logo" />
       <div style={{ width: "300px", margin: "auto" }}>
         <Form>
           <Button size="large" label="Click Me Plz" actionType="primary" />
           <br />
           <br />
           <Input
-            error="ruh roh you dumaass"
+            error="Enter a valid email"
             type="text"
             label="Enter name"
-            size="sm"
-            helpText="Enter a valid email address please and thank you."
+            size="md"
+            helpText="Add contextual help."
           />
         </Form>
       </div>

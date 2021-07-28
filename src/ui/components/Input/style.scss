@@ -1,0 +1,28 @@
+@import "src/index.scss";
+
+.element-container {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  label {
+    width: fit-content !important;
+  }
+}
+
+.label-and-error {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.error {
+  border-color: $red !important;
+  box-shadow: 0 0 0 0.15rem rgba($red, 0.25) !important;
+}
+
+.label {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
