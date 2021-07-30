@@ -7,7 +7,8 @@ interface Props {
   type?: "text" | "textarea" | "password" | "email" | "url";
   disabled?: boolean;
   value?: string;
-  // onChange?: ((input: string) => void) | undefined
+  // todo: type this correctly
+  onChange?: any;
   failsValidation?: boolean;
   label?: string;
   labelId?: string;
@@ -27,6 +28,9 @@ export const Input = ({
   size = "md",
   error = "",
   disabled,
+  onChange,
+  restrictedCharacters,
+  helpText,
   ...props
 }: Props): ReactElement => {
   const inputRef = useRef<HTMLInputElement & HTMLTextAreaElement>(null);
@@ -55,13 +59,34 @@ export const Input = ({
     "align-self-end": true
   });
 
+  // Nextup: add styling for this
+  // fix up regex; test chars work.
+  const [invalidCharWarning, setInvalidCharWarning] = React.useState(false);
+  React.useEffect(() => {
+    if (restrictedCharacters) {
+      const regex = new RegExp(`[^${restrictedCharacters}]`, "i");
+      const value = props.value ?? "";
+      if (!regex.test(value)) {
+        setInvalidCharWarning(true);
+      }
+    }
+  }, [restrictedCharacters, props.value]);
+
   React.useEffect(() => {
     if (multiLine && "textarea" !== type) {
       console.warn(
-        "[TYPE WARNING]: multiLine inputs should have a type of textarea to prevent unexpected behavior."
+        "[PROP MISMATCH]: multiLine inputs should have a type of textarea to prevent unexpected behavior."
       );
     }
   }, [multiLine, type]);
+
+  React.useEffect(() => {
+    if (restrictedCharacters && !onChange) {
+      console.warn(
+        "[PROP MISMATCH]: To use restrictedCharacters props, input must be controlled. \n Pass value/onChange props."
+      );
+    }
+  }, [restrictedCharacters, props.value, onChange]);
 
   const renderLabelOrError = (label: string, error: string) => {
     if (label) {
@@ -75,6 +100,7 @@ export const Input = ({
     return <div className={errorStyles}>{error}</div>;
   };
 
+  const onChangeFunc = onChange ?? null;
   return (
     <div className="element-container">
       {renderLabelOrError(label, error)}
@@ -85,6 +111,7 @@ export const Input = ({
           ref={inputRef as RefObject<HTMLTextAreaElement>}
           aria-label={label}
           aria-describedby={props.labelId}
+          onChange={onChangeFunc}
         />
       ) : (
         <input
@@ -96,11 +123,10 @@ export const Input = ({
           aria-label={label}
           aria-describedby={props.labelId}
           disabled={disabled}
+          onChange={onChangeFunc}
         />
       )}
-      {props.helpText && (
-        <div className="form-text text-muted ms-2">{props.helpText}</div>
-      )}
+      {helpText && <div className="form-text text-muted ms-2">{helpText}</div>}
     </div>
   );
 };
