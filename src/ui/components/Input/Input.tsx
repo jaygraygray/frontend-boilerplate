@@ -17,6 +17,7 @@ interface Props {
   size?: "sm" | "md" | "lg";
   helpText?: string;
   error?: string;
+  restrictedCharacters?: string;
 }
 
 export const Input = ({

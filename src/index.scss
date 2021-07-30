@@ -57,3 +57,7 @@ $form-input-border-radius: 50% !important;
 input:disabled {
   cursor: not-allowed !important;
 }
+
+.form-control:focus {
+  box-shadow: 0 0 0.25rem 1px rgba($primary, 25%) !important;
+}

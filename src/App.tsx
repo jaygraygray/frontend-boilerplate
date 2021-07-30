@@ -12,7 +12,12 @@ function App(): ReactElement {
             <Button size="large" label="Click Me Plz" actionType="primary" />
             <br />
             <br />
-            <Input label="Full name" size="md" helpText="dat help babes" />
+            <Input
+              label="Full name"
+              size="md"
+              helpText="dat help babes"
+              value={"blhalkjsd"}
+            />
           </>
         </Form>
       </div>

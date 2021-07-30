@@ -1,5 +1,5 @@
 import React, { ReactNode, ReactElement } from "react";
-import "style.scss";
+import "./style.scss";
 
 interface NavProps {
   children: ReactNode;
