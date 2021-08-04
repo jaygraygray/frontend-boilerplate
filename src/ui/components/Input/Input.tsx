@@ -8,6 +8,7 @@ interface Props {
   disabled?: boolean;
   value?: string;
   // todo: type this correctly
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onChange?: any;
   failsValidation?: boolean;
   label?: string;
@@ -102,7 +103,7 @@ export const Input = ({
 
   const onChangeFunc = onChange ?? null;
   return (
-    <div className="element-container">
+    <div className="element-container" id={`${invalidCharWarning}`}>
       {renderLabelOrError(label, error)}
       {multiLine ? (
         <textarea
