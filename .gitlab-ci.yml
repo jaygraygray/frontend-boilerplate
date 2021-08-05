@@ -2,7 +2,6 @@ image: node:latest
 
 stages:
   - install
-  - check
   - test
   - build
 
@@ -13,6 +12,11 @@ Install dependencies:
   artifacts:
     paths:
       - ./node_modules
+
+Run checks:
+  stage: test
+  script:
+    - npm run lint
 
 Run tests:
   stage: test
