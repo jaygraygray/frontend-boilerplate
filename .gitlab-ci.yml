@@ -11,7 +11,7 @@ Install dependencies:
     - npm install
   artifacts:
     paths:
-      - node_modules/
+      - ./node_modules
 
 Run tests:
   stage: test
@@ -24,4 +24,10 @@ Build app:
     - npm run build
   artifacts:
     paths:
-      - build/
+      - ./build
+
+test server:
+  stage: build
+  script:
+    - npm start
+    - curl "http://localhost:3000" | grep -q "Testing run"
