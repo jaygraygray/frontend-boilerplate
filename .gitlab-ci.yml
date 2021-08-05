@@ -2,6 +2,7 @@ image: node:latest
 
 stages:
   - install
+  - check
   - test
   - build
 
