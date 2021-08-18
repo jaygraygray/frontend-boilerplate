@@ -7,13 +7,17 @@ stages:
 
 Install dependencies:
   stage: install
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
   script:
     - npm install
   artifacts:
     paths:
       - ./node_modules
 
-Run checks:
+Run checks and lint:
   stage: test
   script:
     - npm run lint
@@ -30,9 +34,3 @@ Build app:
   artifacts:
     paths:
       - ./build
-
-test server:
-  stage: build
-  script:
-    - npm lint
-    - curl "http://localhost:3000" | grep -q "Testing run"
