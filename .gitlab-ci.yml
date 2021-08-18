@@ -5,12 +5,14 @@ stages:
   - test
   - build
 
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+  policy: pull
+
 Install dependencies:
   stage: install
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}
-    paths:
-      - node_modules/
   script:
     - npm install
   artifacts:
