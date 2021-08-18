@@ -34,5 +34,5 @@ Build app:
 test server:
   stage: build
   script:
-    - npm start
+    - npm lint
     - curl "http://localhost:3000" | grep -q "Testing run"
