@@ -4,6 +4,7 @@ stages:
   - install
   - test
   - build
+  - deploy staging
 
 cache:
   key: ${CI_COMMIT_REF_SLUG}
@@ -36,3 +37,7 @@ Build app:
   artifacts:
     paths:
       - ./build
+
+Deply staging:
+  stage: deploy staging
+  script: echo "deploy to some place"
