@@ -42,9 +42,8 @@ Build app:
 
 .aws_sync:
   stage: deploy
-  script: |
-    pip install awscli
-    aws s3 sync ./build/ s3://${BUCKET_DEV}
+  image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
+  script: aws s3 sync ./build/ s3://${BUCKET_DEV}
 
 Prod Deploy:
   stage: deploy
