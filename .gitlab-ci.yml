@@ -49,4 +49,5 @@ Build app:
 Prod Deploy:
   stage: deploy
   extends: .aws_sync
-  before_script: -export S3_BUCKET=${BUCKET_DEV}
+  before_script:
+    - export S3_BUCKET=${BUCKET_DEV}
