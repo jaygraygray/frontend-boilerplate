@@ -52,6 +52,8 @@ Staging Deploy:
   extends: .aws_sync
   before_script:
     - export S3_BUCKET=${BUCKET_DEV}
+  only:
+    - develop
 
 Prod Deploy:
   stage: deploy
