@@ -22,9 +22,10 @@ function App(): ReactElement {
             <Input
               label="Full name"
               size="md"
-              helpText="dat help babes"
+              helpText="dat help babessss"
               onChange={onChange}
               value={val}
+              // todo make validation work
               restrictedCharacters="<>"
             />
           </>
