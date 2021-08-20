@@ -32,8 +32,6 @@ Run tests:
 
 Build app:
   stage: build
-  environment:
-    name: review/$CI_COMMIT_REF_NAME
   script:
     - npm run build
   artifacts:
@@ -47,6 +45,9 @@ Build app:
 
 Prod Deploy:
   stage: deploy
+  environment:
+    name: Production
+  when: manual
   extends: .aws_sync
   before_script:
     - export S3_BUCKET=${BUCKET_DEV}
