@@ -1,6 +1,10 @@
 ### File setup
 image: node:latest
 
+variables:
+  ARTIFACT_NAME: build-v${CI_PIPELINE_IID}
+  EBS_APP_NAME: gitlab-learner
+
 stages:
   - install
   - test
@@ -17,8 +21,10 @@ cache:
 .aws_sync:
   stage: deploy
   image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
-  script: aws s3 sync ./build/ s3://${BUCKET_DEV}
-
+  script: 
+  - aws s3 sync ./build/ s3://${BUCKET_DEV}/${ARTIFACT_NAME}
+  - aws elasticbeanstalk create-application-version --application-name ${EBS_APP_NAME} --version-label $CI_PIPELINE_IID --source-bundle S3Bucket=${BUCKET_DEV},S3Key=${ARTIFACT_NAME}
+  - aws elasticbeanstalk update-environment --application_name ${EBS_APP_NAME} --environment-name "production" --version-label $CI_PIPELINE_IID
 ### Stages
 Install dependencies:
   stage: install
@@ -42,6 +48,7 @@ Build app:
   stage: build
   script:
     - npm run build
+    - mv ./build /build/${ARTIFACT_NAME}
   artifacts:
     paths:
       - ./build
@@ -72,7 +79,7 @@ Prod Deploy:
   stage: deploy
   environment:
     name: Production
-  when: manual
+  # when: manual
   extends: .aws_sync
   before_script:
     - export S3_BUCKET=${BUCKET_DEV}
