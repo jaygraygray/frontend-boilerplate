@@ -50,11 +50,13 @@ Review Deploy:
   stage: review
   extends: .aws_sync
   only:
-    - merge_requests
+    - branches
   environment:
     name: review/$CI_COMMIT_REF_NAME
   before_script:
     - export S3_BUCKET=${BUCKET_DEV}
+  only:
+    - review
 
 Staging Deploy:
   stage: deploy
