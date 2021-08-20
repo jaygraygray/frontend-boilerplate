@@ -5,6 +5,7 @@ stages:
   - install
   - test
   - build
+  - review
   - deploy
 
 cache:
@@ -44,6 +45,16 @@ Build app:
   artifacts:
     paths:
       - ./build
+
+Review Deploy:
+  stage: review
+  extends: .aws_sync
+  only:
+    - merge_requests
+  environment:
+    name: review/$CI_COMMIT_REF_NAME
+  before_script:
+    - export S3_BUCKET=${BUCKET_DEV}
 
 Staging Deploy:
   stage: deploy
