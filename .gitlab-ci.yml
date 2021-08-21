@@ -48,7 +48,6 @@ Build app:
   stage: build
   script:
     - npm run build
-    - mv ./build /build/${ARTIFACT_NAME}
   artifacts:
     paths:
       - ./build
