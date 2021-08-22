@@ -25,7 +25,9 @@ cache:
   - aws s3 sync ./build/ s3://${BUCKET_DEV}/${ARTIFACT_NAME}
   - aws elasticbeanstalk create-application-version --application-name ${EBS_APP_NAME} --version-label $CI_PIPELINE_IID --source-bundle S3Bucket=${BUCKET_DEV},S3Key=${ARTIFACT_NAME}
   - aws elasticbeanstalk update-environment --application_name ${EBS_APP_NAME} --environment-name "production" --version-label $CI_PIPELINE_IID
+
 ### Stages
+# - add aggressive cache unless dependencies change
 Install dependencies:
   stage: install
   script:
@@ -62,7 +64,7 @@ Review Deploy:
   before_script:
     - export S3_BUCKET=${BUCKET_DEV}
   only:
-    - review
+    - ^review/
 
 Staging Deploy:
   stage: deploy
