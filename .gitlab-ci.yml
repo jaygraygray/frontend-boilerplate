@@ -74,7 +74,7 @@ Staging Deploy:
   before_script:
     - export S3_BUCKET=${REVIEW_BUCKET_NAME}
   only:
-    - develop
+    - ^develop/
 
 Prod Deploy:
   stage: deploy
@@ -85,4 +85,4 @@ Prod Deploy:
   before_script:
     - export S3_BUCKET=${REVIEW_BUCKET_NAME}
   only:
-    - master
+    - ^master/
