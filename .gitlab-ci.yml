@@ -24,10 +24,10 @@ before_script:
 .aws_sync:
   stage: deploy
   image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
-  script: 
-  - aws s3 sync ./build/ s3://${S3_BUCKET}/${ARTIFACT_NAME}
-  - aws elasticbeanstalk create-application-version --application-name ${EBS_APP_NAME} --version-label $CI_PIPELINE_IID --source-bundle S3Bucket=${S3_BUCKET},S3Key=${ARTIFACT_NAME}
-  - aws elasticbeanstalk update-environment --application_name ${EBS_APP_NAME} --environment-name "production" --version-label $CI_PIPELINE_IID
+  script:
+    - aws s3 sync ./build/ s3://${S3_BUCKET}/${ARTIFACT_NAME}
+    - aws elasticbeanstalk create-application-version --application-name ${EBS_APP_NAME} --version-label $CI_PIPELINE_IID --source-bundle S3Bucket=${S3_BUCKET},S3Key=${ARTIFACT_NAME}
+    - aws elasticbeanstalk update-environment --application_name ${EBS_APP_NAME} --environment-name "production" --version-label $CI_PIPELINE_IID
 
 ### Stages
 Run checks and lint:
@@ -51,8 +51,6 @@ Build app:
 Review Deploy:
   stage: review
   extends: .aws_sync
-  only:
-    - branches
   environment:
     name: review/$CI_COMMIT_REF_NAME
   before_script:
