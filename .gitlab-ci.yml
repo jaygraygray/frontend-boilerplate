@@ -12,11 +12,11 @@ stages:
   - review
   - deploy
 
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - node_modules/
-  policy: pull
+# cache:
+#   key: ${CI_COMMIT_REF_SLUG}
+#   paths:
+#     - node_modules/
+#   policy: pull
 
 .aws_sync:
   stage: deploy
