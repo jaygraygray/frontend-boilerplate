@@ -15,8 +15,11 @@ stages:
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
-    - node_modules/
+    - ./npm
   policy: pull
+
+before_script:
+  - npm ci --cache .npm --prefer-offline
 
 .aws_sync:
   stage: deploy
@@ -27,15 +30,6 @@ cache:
   - aws elasticbeanstalk update-environment --application_name ${EBS_APP_NAME} --environment-name "production" --version-label $CI_PIPELINE_IID
 
 ### Stages
-# - add aggressive cache unless dependencies change
-Install dependencies:
-  stage: install
-  script:
-    - npm install
-  artifacts:
-    paths:
-      - ./node_modules
-
 Run checks and lint:
   stage: test
   script:
@@ -85,4 +79,4 @@ Prod Deploy:
   before_script:
     - export S3_BUCKET=${PROD_BUCKET_NAME}
   only:
-    - ^master/
+    - master
