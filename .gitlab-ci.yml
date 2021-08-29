@@ -22,8 +22,8 @@ cache:
   stage: deploy
   image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
   script: 
-  - aws s3 sync ./build/ s3://${REVIEW_BUCKET_NAME}/${ARTIFACT_NAME}
-  - aws elasticbeanstalk create-application-version --application-name ${EBS_APP_NAME} --version-label $CI_PIPELINE_IID --source-bundle S3Bucket=${REVIEW_BUCKET_NAME},S3Key=${ARTIFACT_NAME}
+  - aws s3 sync ./build/ s3://${S3_BUCKET}/${ARTIFACT_NAME}
+  - aws elasticbeanstalk create-application-version --application-name ${EBS_APP_NAME} --version-label $CI_PIPELINE_IID --source-bundle S3Bucket=${S3_BUCKET},S3Key=${ARTIFACT_NAME}
   - aws elasticbeanstalk update-environment --application_name ${EBS_APP_NAME} --environment-name "production" --version-label $CI_PIPELINE_IID
 
 ### Stages
@@ -72,7 +72,7 @@ Staging Deploy:
     name: Beta
   extends: .aws_sync
   before_script:
-    - export S3_BUCKET=${REVIEW_BUCKET_NAME}
+    - export S3_BUCKET=${BETA_BUCKET_NAME}
   only:
     - ^develop/
 
@@ -83,6 +83,6 @@ Prod Deploy:
   # when: manual
   extends: .aws_sync
   before_script:
-    - export S3_BUCKET=${REVIEW_BUCKET_NAME}
+    - export S3_BUCKET=${PROD_BUCKET_NAME}
   only:
     - ^master/
