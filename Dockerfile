@@ -2,19 +2,16 @@ FROM node:alpine
 LABEL maintainer="jeremygray001@gmail.com"
 
 # Create directory for application
-WORKDIR "/app"
+WORKDIR "/build"
 
 # Copy package and lock files
 COPY ./package*.json ./
 
-RUN npm install
+RUN npm ci
 
-# For production:
-# RUN npm ci --only=production
+COPY public/ public
+COPY src/ src
+RUN npm run build
 
-# Bundle app source
-COPY . .
-
-EXPOSE 9000
-
-CMD ["npm", "start"]
+FROM nginx:alpine
+COPY --from=build /build/build/ /usr/share/nginx/html
