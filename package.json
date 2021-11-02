@@ -86,7 +86,9 @@
     "make-pretty": "prettier --check 'src/'",
     "lint-fix": "eslint . --fix --max-warnings 0",
     "lint": "eslint .",
-    "check": "npm run lint && npm run make-pretty"
+    "check": "npm run lint && npm run make-pretty",
+    "build-local": "docker build . -t therealjaygray/frontend-boilerplate",
+    "run-local-build": "docker run -p 49160:8080 -d therealjaygray/frontend-boilerplate"
   },
   "eslintConfig": {
     "extends": [
