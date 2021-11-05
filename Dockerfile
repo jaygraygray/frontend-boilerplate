@@ -14,9 +14,7 @@ COPY public/ public
 COPY src/ src
 COPY scripts/ scripts
 COPY config/ config
+ENV NODE_ENV=production
 RUN npm run build-prod
 
-
-
-# FROM nginx
-# COPY --from=build /build/build/ /usr/share/nginx/html
+CMD ["npm", "start"]
