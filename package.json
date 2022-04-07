@@ -81,12 +81,15 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
+    "deploy-raw": "npm run build && aws s3 sync build/ s3://static-apps00/static",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "make-pretty": "prettier --check 'src/'",
     "lint-fix": "eslint . --fix --max-warnings 0",
     "lint": "eslint .",
-    "check": "npm run lint && npm run make-pretty"
+    "check": "npm run lint && npm run make-pretty",
+    "build-local": "docker build . ",
+    "run-local-build": "docker run -p 49160:8080 -d therealjaygray/frontend-boilerplate"
   },
   "eslintConfig": {
     "extends": [

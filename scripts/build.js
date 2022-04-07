@@ -137,13 +137,14 @@ function build(previousFileSizes) {
 
   const compiler = webpack(config);
   return new Promise((resolve, reject) => {
+    console.log(">> promise executed 1");
     compiler.run((err, stats) => {
       let messages;
       if (err) {
         if (!err.message) {
           return reject(err);
         }
-
+        console.log(">>error!", err);
         let errMessage = err.message;
 
         // Add additional information for postcss errors
@@ -168,6 +169,7 @@ function build(previousFileSizes) {
         if (messages.errors.length > 1) {
           messages.errors.length = 1;
         }
+        console.log("<<< dat reject");
         return reject(new Error(messages.errors.join("\n\n")));
       }
       if (
