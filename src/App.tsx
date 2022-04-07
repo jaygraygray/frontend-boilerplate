@@ -16,13 +16,13 @@ function App(): ReactElement {
       <div style={{ width: "300px", margin: "5rem" }}>
         <Form>
           <>
-            <Button size="large" label=":):):):)" actionType="primary" />
+            <Button size="large" label=":(:(:(:(" actionType="primary" />
             <br />
             <br />
             <Input
               label="Full name"
               size="md"
-              helpText="dat help babessss"
+              helpText="Verified Change"
               onChange={onChange}
               value={val}
               // todo make validation work
