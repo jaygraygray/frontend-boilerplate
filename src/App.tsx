@@ -16,7 +16,7 @@ function App(): ReactElement {
       <div style={{ width: "300px", margin: "5rem" }}>
         <Form>
           <>
-            <Button size="large" label=":):):):)" actionType="primary" />
+            <Button size="large" label=":O:O:O" actionType="primary" />
             <br />
             <br />
             <Input
